@@ -13,11 +13,13 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor{
 
 	int x;
 	int y;
+	Board board;
 
 	@Override
 	public void create() {
 		x = 0;
 		y = 0;
+		board = new Board(9, 16);
 		shapeRenderer = new ShapeRenderer();
 		Gdx.input.setInputProcessor(this);
 	}
@@ -28,7 +30,7 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor{
 		Gdx.gl.glClearColor( 1, 1, 1, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT); // Czyści ekran
 
-		RenderBoard.renderGrid(shapeRenderer);
+		RenderBoard.renderGrid(shapeRenderer, board);
 		RenderBoard.renderSquare(shapeRenderer, x, y);
 
 	}
