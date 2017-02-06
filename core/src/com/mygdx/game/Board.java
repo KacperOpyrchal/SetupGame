@@ -1,7 +1,11 @@
 package com.mygdx.game;
 
+import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.graphics.g3d.particles.influencers.ColorInfluencer;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Created by JavaDev on 04.02.2017.
@@ -30,30 +34,46 @@ public class Board {
     }
 
     public void generateBoard(){
-        getCell(0,0).setValue(2);
-        getCell(0,0).setKind(1);
 
-        getCell(0,1).setValue(1);
-        getCell(0,1).setKind(1);
+        Random rand = new Random();
 
-        getCell(1,1).setValue(5);
-        getCell(1,1).setKind(1);
+        for(int y = 0; y < ySize; ++y){
+            cells.add(new ArrayList<Cell>());
+            for(int x = 0; x < xSize; ++x){
+                int a = rand.nextInt(8)+1;
+                getCell(x,y).setValue(a);
+            }
+        }
 
-        getCell(0,2).setValue(4);
-        getCell(0,2).setKind(1);
+        for(int y = 0+1; y < 2+1; ++y){
+            for(int x = 0+1; x < 2+1; ++x){
+                getCell(x,y).setKind(1);
+                getCell(x,y).setValue(rand.nextInt(8)+1);
+            }
+        }
+
+        for(int y = 3+1; y < 5+1; ++y){
+            for(int x = 0+1; x < 2+1; ++x){
+                getCell(x,y).setKind(2);
+                getCell(x,y).setValue(rand.nextInt(8)+1);
+            }
+        }
+
+        for(int y = 0+1; y < 2+1; ++y){
+            for(int x = 2+1; x < 4+1; ++x){
+                getCell(x,y).setKind(3);
+                getCell(x,y).setValue(rand.nextInt(8)+1);
+            }
+        }
 
 
-        getCell(3,0).setValue(5);
-        getCell(3,0).setKind(2);
+        for(int y = 3+1; y < 5+1; ++y){
+            for(int x = 2+1; x < 4+1; ++x){
+                getCell(x,y).setKind(4);
+                getCell(x,y).setValue(rand.nextInt(8)+1);
+            }
+        }
 
-        getCell(3,1).setValue(2);
-        getCell(3,1).setKind(2);
-
-        getCell(3,1).setValue(1);
-        getCell(3,1).setKind(2);
-
-        getCell(3,2).setValue(3);
-        getCell(3,2).setKind(2);
 
     }
 

@@ -4,12 +4,15 @@ import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
 import sun.rmi.runtime.Log;
 
 public class MyGdxGame extends ApplicationAdapter implements InputProcessor{
 	ShapeRenderer shapeRenderer;
+	Batch batch;
 
 	int x;
 	int y;
@@ -19,7 +22,8 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor{
 	public void create() {
 		x = 0;
 		y = 0;
-		board = new Board(9, 16);
+		batch = new SpriteBatch();
+		board = new Board(6, 7);
 		shapeRenderer = new ShapeRenderer();
 		Gdx.input.setInputProcessor(this);
 	}
@@ -30,8 +34,10 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor{
 		Gdx.gl.glClearColor( 1, 1, 1, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT); // Czyści ekran
 
+		RenderBoard.renderCells(shapeRenderer, board);
+		RenderBoard.renderNumbers(batch, board);
 		RenderBoard.renderGrid(shapeRenderer, board);
-		RenderBoard.renderSquare(shapeRenderer, x, y);
+		RenderBoard.renderSquare(shapeRenderer, x, y, board);
 
 	}
 	@Override
