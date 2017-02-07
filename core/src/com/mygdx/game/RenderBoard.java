@@ -15,6 +15,10 @@ public class RenderBoard {
 
     static BitmapFont font;
 
+    public static void init(){
+        font = new BitmapFont();
+    }
+
     public static void renderGrid(ShapeRenderer shapeRenderer, Board board){
         int x = Gdx.graphics.getWidth();
         int y = Gdx.graphics.getHeight();
@@ -107,12 +111,10 @@ public class RenderBoard {
         x /= nx;
         y /= ny;
 
-        font = new BitmapFont();
-
         batch.begin();
 
         //batch.setColor(1, 0, 1, 0);
-        font.getData().setScale(3);
+        font.getData().setScale(1.5f);
         font.setColor(Color.WHITE);
 
         for(int i = 0; i < ny; ++i){
@@ -132,11 +134,9 @@ public class RenderBoard {
         int x = Gdx.graphics.getWidth();
         int y = Gdx.graphics.getHeight();
 
-        font = new BitmapFont();
-
         batch.begin();
 
-        font.setColor(Color.BLACK);
+        font.setColor(Color.GREEN);
 
         font.draw(batch, attacker, 10, y-10);
         font.draw(batch, defender, 10, y-60);

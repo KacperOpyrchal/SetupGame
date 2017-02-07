@@ -44,6 +44,8 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor{
 		nowX = -1;
 		nowY = -1;
 
+		RenderBoard.init();
+
 		attacker = "ATT";
 		defender = "DEF";
 		result = "RESULT";
@@ -57,7 +59,7 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor{
 	public void resize(int width, int height) {}
 	@Override
 	public void render() {
-		Gdx.gl.glClearColor( 1, 1, 1, 1);
+		Gdx.gl.glClearColor( 0, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT); // Czyści ekran
 
 		RenderBoard.renderCells(shapeRenderer, board);
@@ -107,8 +109,6 @@ public class MyGdxGame extends ApplicationAdapter implements InputProcessor{
 
 		nowX = screenX / x;
 		nowY = (Gdx.graphics.getHeight() - screenY) / y;
-
-		result = "X = " + nowX + " Y = " + nowY;
 
 		if(prevX >= 0 && prevY >= 0 && prevX < board.getX() && prevY < board.getY()){
 			if(nowX >= 0 && nowY >= 0 && nowX < board.getX() && nowY < board.getY()){
