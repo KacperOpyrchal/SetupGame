@@ -127,6 +127,26 @@ public class RenderBoard {
 
     }
 
+    public static void renderFight(Batch batch, String attacker, String defender, String result){
+
+        int x = Gdx.graphics.getWidth();
+        int y = Gdx.graphics.getHeight();
+
+        font = new BitmapFont();
+
+        batch.begin();
+
+        font.setColor(Color.BLACK);
+
+        font.draw(batch, attacker, 10, y-10);
+        font.draw(batch, defender, 10, y-60);
+        font.draw(batch, result, 10, y-110);
+
+        batch.end();
+
+    }
+
+
     public static void renderSquare(ShapeRenderer shapeRenderer, int x, int y, Board board){
         Gdx.gl.glLineWidth(100);
         shapeRenderer.begin(ShapeRenderer.ShapeType.Line);
